@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{{ course.name }}{% endblock %}
+{% block content %}
+<h2>{{ course.name }}</h2>
+<p>{{ course.description }}</p>
+<p><strong>Students Enrolled:</strong></p>
+<ul>
+    {% for student in course.students.all %}
+        <li><a href="{% url 'student_detail' student.pk %}">
+            {{ student.name }}
+        </a>
+        </li>
+    {% empty %}
+        <li>No students enrolled.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'course_update' course.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'course_delete' course.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'course_list' %}" class="btn btn-secondary">Back</a>
+{% endblock %}

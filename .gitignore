@@ -1,0 +1,12 @@
+# Virtual environment
+venv/
+
+# Compiled python files
+__pycache__/
+
+# Database file
+db.sqlite3
+
+# Migrations
+migrations/
+!migrations/__init__.py

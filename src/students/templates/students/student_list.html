@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Students{% endblock %}
+{% block content %}
+<h2>Students</h2>
+<a class="btn btn-primary mb-3" href="{% url 'student_create' %}">Create Student</a>
+<ul class="list-group">
+    {% for student in students %}
+    <li class="list-group-item d-flex justify-content-between">
+        <span>{{ student.name }} ({{ student.email }})</span>
+        <span>
+            <a href="{% url 'student_detail' student.pk %}" class="btn btn-sm btn-info">View</a>
+            <a href="{% url 'student_update' student.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'student_delete' student.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
